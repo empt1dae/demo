@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("db_copy.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $login = $_POST['login'];

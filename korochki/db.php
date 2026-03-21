@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli("127.0.0.1", "root", "", "korochki", 3307);
+    $conn = new mysqli("127.0.0.1", "root", "", "korochki");
     if($conn->connect_error){
         die("Ошибка  подключения!");
     }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("db_copy.php");
 
 ini_set('display_errors', 1);
 
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <img src="media/image13.webp" class="slide" alt="Курс 6">
     <div class="slider-overlay">
         <h2>Выберите курс и отправьте заявку</h2>
-        <p>Слайдер переключается стрелками и сохраняет одинаковый размер на любом разрешении изображений.</p>
+        <p></p>
     </div>
     <button class="slider-arrow next" type="button" aria-label="Next slide">&#8250;</button>
 </div>
