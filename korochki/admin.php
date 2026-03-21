@@ -1,7 +1,6 @@
 <?php
 session_start();
-include("db_copy.php");
-
+include("db.php");
 
 ini_set('display_errors', 1);
 
@@ -11,11 +10,10 @@ if (!isset($_SESSION['users'])) {
 }
 
 if ($_SESSION['users']['role_id'] != 2) {
-    die("Доступ запрещён");
+    die("Доступ запрещен");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
     $order_id = (int)$_POST['order_id'];
     $status_id = (int)$_POST['status_id'];
 
@@ -35,9 +33,10 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ-панель</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -52,26 +51,18 @@ $result = mysqli_query($conn, $query);
 </header>
 
 <div class="container">
-
     <h2>Все заявки</h2>
 
     <div class="orders">
-
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
             <div class="order-card">
-
                 <h3><?= $row['kurses'] ?></h3>
-
                 <p><b>Пользователь:</b> <?= $row['login'] ?></p>
-
                 <p><b>Дата:</b> <?= $row['date'] ?></p>
-
                 <p><b>Оплата:</b> <?= $row['payment_type'] ?></p>
-
                 <p><b>Статус:</b> <?= $row['status_name'] ?></p>
 
                 <form method="POST" class="status-form">
-
                     <input type="hidden" name="order_id" value="<?= $row['id_orders'] ?>">
 
                     <select name="status_id">
@@ -81,14 +72,10 @@ $result = mysqli_query($conn, $query);
                     </select>
 
                     <button>Изменить</button>
-
                 </form>
-
             </div>
         <?php endwhile; ?>
-
     </div>
-
 </div>
 
 </body>

@@ -1,7 +1,6 @@
 <?php
 session_start();
-include("db_copy.php");
-
+include("db.php");
 
 ini_set('display_errors', 1);
 
@@ -24,7 +23,7 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +33,7 @@ $result = mysqli_query($conn, $query);
 <body>
 
 <header class="header">
-    <h1>Мои заявки</h1>
+    <h1><a href="orders.php">Мои заявки</a></h1>
     <div class="nav">
         <a href="orders.php">Новая заявка</a>
         <a href="logout.php">Выход</a>
@@ -42,11 +41,9 @@ $result = mysqli_query($conn, $query);
 </header>
 
 <div class="container">
-
     <h2>Список заявок</h2>
 
     <div class="orders">
-
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
             <div class="order-card">
                 <h3><?= $row['kurses'] ?></h3>
@@ -55,12 +52,8 @@ $result = mysqli_query($conn, $query);
                 <p><b>Статус:</b> <?= $row['status_name'] ?></p>
             </div>
         <?php endwhile; ?>
-
     </div>
-
 </div>
 
 </body>
 </html>
-
-
